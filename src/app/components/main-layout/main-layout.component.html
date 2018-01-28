@@ -1,0 +1,33 @@
+<div style="z-index: 1031; position: fixed;right: 0;left: 0;top:0;">
+    <ng-progress [showSpinner]="false" [color]="'white'"></ng-progress>
+</div>
+<header class="header-6">
+    <div class="branding">
+        <a [routerLink]="['/']" class="nav-link">
+            <clr-icon shape="filter-grid-circle" class="is-solid"></clr-icon>
+            <span class="title">Custom catalogs explorer</span>
+        </a>
+    </div>
+    <div class="header-nav">
+        <a [routerLink]="['/search']" routerLinkActive="active" class="nav-link"><span class="nav-text">Поиск</span></a>
+        <a [routerLink]="['/cat-entities']" routerLinkActive="active" class="nav-link"><span class="nav-text">Предметы</span></a>
+        <a [routerLink]="['/cat-tables']" routerLinkActive="active" class="nav-link"><span class="nav-text">Таблицы</span></a>
+    </div>
+    <div class="header-actions">
+        <a [routerLink]="['/settings']" routerLinkActive="active" class="nav-link nav-icon">
+            <clr-icon shape="cog"></clr-icon>
+        </a>
+    </div>
+</header>
+
+<div class="container content-container">
+    <div class="content-area">
+        <div class="row">
+            <div class="col-xs-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+

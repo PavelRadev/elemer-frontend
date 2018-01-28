@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header-2">
+            Таблица
+            <small *ngIf="model" class="animated fadeIn">
+                "{{model.name}}"
+            </small>
+        </h3>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-xs-12">
+        <clr-tabs>
+            <clr-tab *ngIf="model">
+                <button clrTabLink id="link1">Общая информация</button>
+                <clr-tab-content id="content1">
+                    <form #entityForm="ngForm">
+                        <div class="form-group">
+                            <label for="name" class="required">Название</label>
+
+                            <input type="text" class="width-100p" id="name" name="name" [(ngModel)]="model.name"
+                                   placeholder="Введите название таблицы" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entity_id" class="required">Относится к</label>
+                            <div class="select width-100p">
+                                <select id="entity_id" name="entity_id" [(ngModel)]="model.entityId" required>
+                                    <option *ngFor="let item of entities" [value]="item.id">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="required">Описание</label>
+                            <textarea id="description" name="description" rows="5" [(ngModel)]="model.description"
+                                      required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary"
+                                    [disabled]="entityForm.invalid || isQueryProcessing" (click)="saveEntity()">
+                                <i *ngIf="isQueryProcessing" class="fa fa-spin fa-cog fa-fw"></i>
+                                Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </clr-tab-content>
+            </clr-tab>
+            <clr-tab>
+                <button clrTabLink>Данные</button>
+                <clr-tab-content>
+                    <app-table></app-table>
+                </clr-tab-content>
+            </clr-tab>
+        </clr-tabs>
+    </div>
+</div>

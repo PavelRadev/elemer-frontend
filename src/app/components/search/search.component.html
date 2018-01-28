@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-text">
+                    <span *ngIf="!!lastSearchInputModel">
+                        {{searchInteractiveText}}
+                    </span>
+                    <span *ngIf="!lastSearchInputModel">
+                        Параметры поиска не выбраны
+                    </span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button *ngIf="!lastSearchInputModel" class="btn btn-sm btn-link" (click)="openWizard()">Выбрать
+                    параметры
+                </button>
+                <button *ngIf="!!lastSearchInputModel" class="btn btn-sm btn-link" (click)="openWizard()">Выбрать
+                    заново
+                </button>
+                <button *ngIf="!!lastSearchInputModel" class="btn btn-sm btn-link"
+                        (click)="openWizard(lastSearchInputModel)">Изменить параметры
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="searchResults">
+    <ng-container *ngIf="searchResults.fullyAcceptedRows.length>0">
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Эти строки полностью соответствуют условиям поиска</h5>
+            </div>
+        </div>
+        <div class="row" *ngFor="let row of searchResults.fullyAcceptedRows">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            №
+                        </th>
+                        <ng-container *ngFor="let value of row.values">
+                            <th style="vertical-align: middle;">
+                                {{value?.column?.name}}
+                            </th>
+                        </ng-container>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        ...
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <b>{{row?.number}}</b>
+                        </td>
+                        <ng-container *ngFor="let value of row.values">
+                            <td style="vertical-align: middle;">
+                                {{value?.value}}
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        ...
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="searchResults">
+    <ng-container *ngIf="searchResults.partlyAcceptedRows.length>0">
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Эти строки частично соответствуют условиям поиска</h5>
+            </div>
+        </div>
+        <div class="row" *ngFor="let row of searchResults.partlyAcceptedRows">
+            <div class="col-xs-12">
+                <h6>Таблица {{row.table.name}}, Строка №{{row.number}}</h6>
+            </div>
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            №
+                        </th>
+                        <ng-container *ngFor="let value of row.values">
+                            <th style="vertical-align: middle;">
+                                {{value?.column?.name}}
+                            </th>
+                        </ng-container>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        ...
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <b>{{row?.number}}</b>
+                        </td>
+                        <ng-container *ngFor="let value of row.values">
+                            <td style="vertical-align: middle;">
+                                {{value?.value}}
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        ...
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+<app-search-params-selection-wizard
+        (searchParamsSelectionCompleted)="searchParamsSelectionCompleted($event)"></app-search-params-selection-wizard>

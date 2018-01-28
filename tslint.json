@@ -10,14 +10,14 @@
       true,
       "check-space"
     ],
-    "curly": true,
-    "eofline": true,
+    "curly": false,
+    "eofline": false,
     "forin": true,
-    "import-blacklist": [
-      true,
-      "rxjs",
-      "rxjs/Rx"
-    ],
+//    "import-blacklist": [
+//      true,
+//      "rxjs",
+//      "rxjs/Rx"
+//    ],
     "import-spacing": true,
     "indent": [
       true,
@@ -80,12 +80,12 @@
       "check-else",
       "check-whitespace"
     ],
-    "prefer-const": true,
+    "prefer-const": false,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
-    "radix": true,
+    "radix": false,
     "semicolon": [
       true,
       "always"
@@ -127,7 +127,7 @@
       "app",
       "kebab-case"
     ],
-    "angular-whitespace": [true, "check-interpolation"],
+    "angular-whitespace": [false, "check-interpolation"],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

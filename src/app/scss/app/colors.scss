@@ -1,0 +1,235 @@
+$yellow: #d8b752;
+$light-blue: #00b0e8;
+$lightest-blue: #d2edf7;
+$lightest-lightest-blue: #97e0f7;
+$strong-cyan: #20b7d8;
+$c-dark-gray: #49555a;
+
+$lightest-green: #c8e9c8;
+$lightest-red: #e7c7c6;
+
+$orange:                    #FF7100;
+
+$brand-primary:             #20a8d8;
+$brand-success:             #4dbd74;
+$brand-info:                #63c2de;
+$brand-warning: #f88d46;
+$brand-danger:              #f86c6b;
+
+$c-blue:                    #1073af;
+
+$gray-dark:                 #263238;
+$gray:                      #607d8b;
+$gray-light:                #b0bec5;
+$gray-lighter:              #cfd8dc;
+$gray-lightest:             #eceff1;
+
+.c-green {
+  color: $brand-success;
+}
+
+.c-lightest-green {
+  color: $lightest-green;
+}
+
+.c-green-important {
+  color: $brand-success !important;
+}
+
+.c-red {
+  color: $brand-danger;
+}
+
+.c-lightest-red {
+  color: $lightest-red;
+}
+
+.c-red-important {
+  color: $brand-danger !important;
+}
+
+.c-yellow {
+  color: $yellow;
+}
+
+.c-orange {
+  color: $orange;
+}
+
+.c-blue {
+  color: $c-blue;
+}
+
+.c-blue-important {
+  color: $c-blue !important;
+}
+
+.c-gray {
+  color: $gray;
+}
+
+.c-gray-important {
+  color: $gray !important;
+}
+
+.c-black-important {
+  color: #000 !important;
+}
+
+.c-light-gray {
+  color: $gray-light;
+}
+
+.c-light-gray-important {
+  color: $gray-light !important;
+}
+
+.c-dark-gray {
+  color: $c-dark-gray;
+}
+
+.c-dark-gray-important {
+  color: $c-dark-gray !important;
+}
+
+.c-dark {
+  color: #333;
+}
+
+.c-black {
+  color: black;
+}
+
+a.active {
+  .c-black, .c-light-gray {
+    color: white;
+  }
+}
+
+.c-light-blue {
+  color: $light-blue;
+}
+
+.text-muted-inverted {
+  color: #93a6af !important;
+}
+
+a.text-muted-inverted:focus, a.text-muted-inverted:hover {
+  color: white !important;
+}
+
+.form-control-danger {
+  background-color: rgba(217, 83, 79, 0.2);
+}
+
+.bc-white {
+  background-color: white;
+}
+
+.bc-white-important {
+  background-color: white !important;
+}
+
+.bc-strong-cyan {
+  background-color: $strong-cyan;
+}
+
+.c-white {
+  color: white;
+}
+
+.c-white-important {
+  color: white !important;
+}
+
+.bc-green {
+  background-color: $brand-success;
+}
+
+.bc-green-important {
+  background-color: $brand-success !important;
+}
+
+.bc-green-op30 {
+  background-color: rgba(92, 184, 92, 0.31);
+}
+
+.bc-light-green {
+  background-color: #f4fff8;
+}
+
+.bc-red {
+  background-color: $brand-danger;
+}
+
+.bc-red-important {
+  background-color: $brand-danger !important;
+}
+
+.bc-red-op30 {
+  background-color: rgba(217, 83, 79, 0.31);
+}
+
+.bc-yellow {
+  background-color: $brand-warning;
+}
+
+.bc-yellow-important {
+  background-color: $brand-warning !important;
+}
+
+.bc-yellow-op30 {
+  background-color: rgba(248, 141, 70, 0.31);
+}
+
+.bc-orange {
+  background-color: $brand-warning;
+}
+
+.bc-light-yellow {
+  background-color: #faffe7;
+}
+
+.bc-blue {
+  background-color: #00b0e8;
+}
+
+.bc-blue-important {
+  background-color: #00b0e8 !important;
+}
+
+.bc-blue-op30 {
+  background-color: rgba(0, 176, 232, 0.3);
+}
+
+.bc-light-gray {
+  background-color: $gray-lightest;
+}
+
+.bc-light-blue {
+  background-color: #E1F1FF;
+}
+
+.bc-light-red {
+  background-color: #ffded3;
+}
+
+select.c-black:focus {
+  color: black;
+}
+
+select.c-green:focus {
+  color: $brand-success;
+}
+
+select.c-green:focus {
+  color: $brand-success;
+}
+
+select.c-yellow:focus {
+  color: $brand-warning;
+}
+
+select.text-mited:focus {
+  color: $gray-lighter;
+}

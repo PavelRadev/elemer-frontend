@@ -1,0 +1,59 @@
+<ng-container *ngIf="!!tableModel?.id">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="toggle-switch">
+            <input type="checkbox" id="isEditingMode" [(ngModel)]="isEditingMode" (ngModelChanged)="detectChanges()">
+            <label for="isEditingMode">Режим редактирования</label>
+          </div>
+
+          <button class="btn btn-outline" (click)="createEmptyRow()">Добавить строку</button>
+
+          <input type="text" id="newColumnName" [(ngModel)]="newColumnName" placeholder="Имя новой колонки">
+          <button class="btn btn-outline" (click)="createColumn(newColumnName)">Добавить колонку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+        <tr *ngFor="let headerRow of tableViewModel.headerRows; index as i">
+          <ng-container *ngFor="let column of headerRow.columns">
+            <th *ngIf="column.isShown" [attr.colspan]="column.colspan" style="vertical-align: middle;" [attr.rowspan]="column.rowspan">
+              {{column.name}}
+
+              <i class="fa fa-trash c-red cursor-pointer" *ngIf="isEditingMode" (click)="removeColumn(column.id)"></i>
+            </th>
+          </ng-container>
+          <th *ngIf="isEditingMode && i==0" [attr.rowspan]="tableViewModel.headerRows.length">
+
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bodyRow of tableViewModel.rows">
+          <ng-container *ngFor="let value of bodyRow.values">
+            <td>
+              <ng-container *ngIf="isEditingMode">
+                <app-typed-input [editingEnabled]="true" [(value)]="value.value" (valueChangedAfterDebounce)="saveValueAfterDebounce(value)"></app-typed-input>
+              </ng-container>
+              <ng-container *ngIf="!isEditingMode">
+                {{!!value.value ? value.value : 'NULL'}}
+              </ng-container>
+            </td>
+          </ng-container>
+          <td *ngIf="isEditingMode">
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="removeRow(bodyRow.id)">
+              <i class="fa fa-trash fa-fw"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>

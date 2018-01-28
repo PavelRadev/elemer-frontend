@@ -1,0 +1,115 @@
+<clr-wizard #wizard [(clrWizardOpen)]="wizardShown" clrWizardSize="lg">
+    <clr-wizard-title>Выберите парамерты поиска</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Отменить</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Назад</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Далее</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Закончить</clr-wizard-button>
+
+    <ng-container *ngIf="!!searchModel">
+        <clr-wizard-page>
+            <ng-template clrPageTitle>Каталог</ng-template>
+            <div class="row m-b-5">
+                <div class="col-xs-12">
+                    <label for="catalog_id" class="required">Выбирать по</label>
+                    <div class="select width-100p">
+                        <select id="catalog_id" name="catalog_id" [(ngModel)]="searchModel.catalogId"
+                                (ngModelChange)="catalogIdChanged()" required>
+                            <option selected value>Всем каталогам</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Функционал разделения предметов на каталоги не представлен в тестовой версии.</p>
+                    <p>В планах на полную версию - разбиение всех сущностей на каталоги, с возможностью предоставления
+                        доступа к ним другим пользователям (либо же, полного сокрытия)</p>
+                    <p> Нажмите "далее".</p>
+                </div>
+            </div>
+
+        </clr-wizard-page>
+
+        <clr-wizard-page>
+            <ng-template clrPageTitle>Категория</ng-template>
+            <div class="row m-b-5">
+                <div class="col-xs-12">
+                    <label for="category_id" class="required">Выбирать по категории</label>
+                    <div class="select width-100p">
+                        <select id="category_id" name="category_id" [(ngModel)]="searchModel.catalogId"
+                                (ngModelChange)="categoryIdChanged()" required>
+                            <option selected value>По всем категориям</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Функционал определения категории/категорий товара не представлен в тестовой версии.</p>
+                    <p>В планах на полную версию - возможность определения категории товара, при создании, с целью
+                        дальнейшей
+                        групировки при отображении/ упрощения поиска, и т.д</p>
+                    <p> Нажмите "далее".</p>
+                </div>
+            </div>
+        </clr-wizard-page>
+
+        <clr-wizard-page (clrWizardPageOnLoad)="tablePageLoaded()">
+            <ng-template clrPageTitle>Таблица</ng-template>
+
+            <div class="row m-b-5">
+                <div class="col-xs-12">
+                    <label for="table_name" class="required">Выбирать по</label>
+                    <div class="select width-100p">
+                        <select id="table_name" name="table_name" [(ngModel)]="searchModel.tableName" required>
+                            <option value>Всем таблицам</option>
+                            <option *ngFor="let table of tablesList" [value]="table">{{table}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </clr-wizard-page>
+
+        <clr-wizard-page (clrWizardPageOnLoad)="paramsPageLoaded()">
+            <ng-template clrPageTitle>Параметры</ng-template>
+
+            <div class="row m-b-5" *ngFor="let columnValuePair of searchModel.columnValuePairs; index as i">
+                <div class="col-xs-5">
+                    <div class="select width-100p">
+                        <select id="column_name{{i}}" name="column_name{{i}}" [(ngModel)]="columnValuePair.columnName"
+                                (ngModelChange)="columnValuePairColumnChanges(columnValuePair)" required>
+                            <option value disabled>Выберите колонку</option>
+                            <option *ngFor="let column of columnValuePair.availableColumns" [value]="column.name">
+                                {{column.fullName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="select width-100p">
+                        <select id="column_value{{i}}" name="column_value{{i}}" [(ngModel)]="columnValuePair.value"
+                                required>
+                            <option value disabled>Выберите значение</option>
+                            <option *ngFor="let value of columnValuePair.availableValues" [value]="value">{{value}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-sm btn-outline-danger" (click)="removeParamsPair(columnValuePair)">
+                        <clr-icon shape="times"></clr-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" [disabled]="columnsLoading" class="btn btn-secondary" (click)="addParameter()">Добавить параметр</button>
+                </div>
+            </div>
+        </clr-wizard-page>
+    </ng-container>
+
+</clr-wizard>

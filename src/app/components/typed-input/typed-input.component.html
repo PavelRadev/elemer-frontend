@@ -1,0 +1,18 @@
+<div *ngIf="typeOfValue() == availableTypes.number">
+    <input [disabled]="!editingEnabled" [name]="name" [id]="id" [(ngModel)]="value" (ngModelChange)="callSave()"
+           placeholder="Введите значение" type="number" class="form-control">
+</div>
+
+<div *ngIf="typeOfValue() == availableTypes.string">
+    <input [disabled]="!editingEnabled" [name]="name" [id]="id" [(ngModel)]="value" (ngModelChange)="callSave()"
+           placeholder="Введите значение" type="text" class="form-control">
+</div>
+
+<div *ngIf="typeOfValue() == availableTypes.boolean">
+    <label class="switch switch-icon switch-pill switch-success-outline">
+        <input [(ngModel)]="value" [name]="name" [id]="id" [disabled]="!editingEnabled" class="switch-input" type="checkbox"
+               (ngModelChange)="callSave()">
+        <span class="switch-label" data-on="&#xf00c;" data-off="&#xf00d;"></span>
+        <span class="switch-handle"></span>
+    </label>
+</div>
